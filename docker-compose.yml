@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # Porta de comunicação da API com o RabbitMQ
+      - "15672:15672" # Porta de gerenciamento do navegador
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: order-api
+    ports:
+      - "8080:8080"
+      - "9092:9092"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
