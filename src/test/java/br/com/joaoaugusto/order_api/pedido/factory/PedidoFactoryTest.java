@@ -32,6 +32,7 @@ public class PedidoFactoryTest {
         final PedidoRequestDTO dtoStub = PedidoRequestDTOStub.newBuilder().withAllFiels().build();
 
         final PedidoResponseDTO expected = new PedidoResponseDTO();
+        expected.setId(1L);
         expected.setCodigoCliente(dtoStub.getCodigoCliente());
         expected.setValorTotal(dtoStub.getValorTotal());
         expected.setEnderecoEntrega(dtoStub.getEnderecoEntrega());
