@@ -1,11 +1,14 @@
-package br.com.joaoaugusto.order_api.consumidor.model;
+package br.com.joaoaugusto.order_api.pedido.dto;
 
-import jakarta.persistence.Embeddable;
 
-@Embeddable
-public class ItemPedido {
+import jakarta.validation.constraints.NotBlank;
 
+public class ItemPedidoDTO {
+
+    @NotBlank(message = "Nome do produto é obrigatório")
     private String nomeProduto;
+
+    @NotBlank(message = "Código do produto é obrigatório")
     private String codigoProduto;
 
     public String getNomeProduto() {

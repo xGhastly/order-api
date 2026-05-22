@@ -1,4 +1,4 @@
-package br.com.joaoaugusto.order_api.consumidor.controller;
+package br.com.joaoaugusto.order_api.pedido.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

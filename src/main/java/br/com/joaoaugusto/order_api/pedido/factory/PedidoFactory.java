@@ -1,10 +1,10 @@
-package br.com.joaoaugusto.order_api.consumidor.factory;
+package br.com.joaoaugusto.order_api.pedido.factory;
 
-import br.com.joaoaugusto.order_api.consumidor.dto.ItemPedidoDTO;
-import br.com.joaoaugusto.order_api.consumidor.dto.PedidoRequestDTO;
-import br.com.joaoaugusto.order_api.consumidor.dto.PedidoResponseDTO;
-import br.com.joaoaugusto.order_api.consumidor.model.ItemPedido;
-import br.com.joaoaugusto.order_api.consumidor.model.Pedido;
+import br.com.joaoaugusto.order_api.pedido.dto.ItemPedidoDTO;
+import br.com.joaoaugusto.order_api.pedido.dto.PedidoRequestDTO;
+import br.com.joaoaugusto.order_api.pedido.dto.PedidoResponseDTO;
+import br.com.joaoaugusto.order_api.pedido.model.ItemPedido;
+import br.com.joaoaugusto.order_api.pedido.model.Pedido;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,6 +33,7 @@ public class PedidoFactory {
 
     public static PedidoResponseDTO pedidoResponseDTOFactory(Pedido pedido) {
         PedidoResponseDTO dto = new PedidoResponseDTO();
+        dto.setId(pedido.getId());
         dto.setCodigoCliente(pedido.getCodigoCliente());
         dto.setValorTotal(pedido.getValorTotal());
         dto.setEnderecoEntrega(pedido.getEnderecoEntrega());

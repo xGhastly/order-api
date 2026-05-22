@@ -1,15 +1,35 @@
-package br.com.joaoaugusto.order_api.consumidor.dto;
+package br.com.joaoaugusto.order_api.pedido.model;
+
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
-public class PedidoResponseDTO {
+@Entity
+@Table(name = "tb_pedido")
+public class Pedido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String codigoCliente;
     private BigDecimal valorTotal;
     private String enderecoEntrega;
-    private List<ItemPedidoDTO> itens;
 
+    @ElementCollection
+    @CollectionTable(name = "tb_item_pedido", joinColumns = @JoinColumn(name = "pedido_id"))
+    private List<ItemPedido> itens = new ArrayList<>();
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCodigoCliente() {
         return codigoCliente;
@@ -35,11 +55,11 @@ public class PedidoResponseDTO {
         this.enderecoEntrega = enderecoEntrega;
     }
 
-    public List<ItemPedidoDTO> getItens() {
+    public List<ItemPedido> getItens() {
         return itens;
     }
 
-    public void setItens(List<ItemPedidoDTO> itens) {
+    public void setItens(List<ItemPedido> itens) {
         this.itens = itens;
     }
 }

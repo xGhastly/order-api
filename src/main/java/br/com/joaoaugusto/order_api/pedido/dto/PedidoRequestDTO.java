@@ -1,4 +1,4 @@
-package br.com.joaoaugusto.order_api.consumidor.dto;
+package br.com.joaoaugusto.order_api.pedido.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
